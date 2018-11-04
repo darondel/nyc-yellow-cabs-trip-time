@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { MapModule } from './map/map.module';
+
 import { AppComponent } from './app.component';
 import { reducers } from './app.reducer';
 import { environment } from '../environments/environment';
@@ -16,6 +18,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    MapModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production
