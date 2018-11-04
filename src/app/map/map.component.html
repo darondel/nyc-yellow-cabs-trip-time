@@ -1,0 +1,17 @@
+<agm-map
+  [latitude]="(centerPoint | async).latitude"
+  [longitude]="(centerPoint | async).longitude"
+  [zoom]="zoomLevel | async"
+  [streetViewControl]="false"
+  (centerChange)="onCenterChange($event)"
+  (zoomChange)="onZoomChange($event)"
+  (idle)="onIdle()">
+
+  <agm-direction
+    [origin]="{lat: (startPoint | async).latitude, lng: (startPoint | async).longitude}"
+    [destination]="{lat: (endPoint | async).latitude, lng: (endPoint | async).longitude}"
+    [drivingOptions]="{departureTime: (date | async)}"
+    [markerOptions]="directionMarkerOptions"
+    [renderOptions]="directionRendererOptions">
+  </agm-direction>
+</agm-map>
