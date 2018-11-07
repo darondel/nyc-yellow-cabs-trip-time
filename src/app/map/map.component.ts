@@ -7,8 +7,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter, first } from 'rxjs/operators';
 
-import { PickCenterPoint, PickZoomLevel } from './store/actions/map.actions';
-import { AppState, getDataDate, getDataEndPoint, getDataStartPoint, getMapCenterPoint, getMapZoomLevel } from '../app.reducer';
+import { UpdateCenter, UpdateZoom } from './actions/map.actions';
+import { AppState, getDataDate, getDataEndPoint, getDataStartPoint, getMapCenter, getMapZoom } from '../app.reducer';
 import { GeographicCoordinate } from '../data/store/models/geographic-coordinate.model';
 
 @Component({
@@ -18,11 +18,11 @@ import { GeographicCoordinate } from '../data/store/models/geographic-coordinate
 })
 export class MapComponent implements OnInit {
 
-  centerPoint: Observable<GeographicCoordinate>;
+  center: Observable<LatLngLiteral>;
   startPoint: Observable<GeographicCoordinate>;
   endPoint: Observable<GeographicCoordinate>;
   date: Observable<Date>;
-  zoomLevel: Observable<number>;
+  zoom: Observable<number>;
 
   /**
    * Specific options for marking each direction on the map:
@@ -59,19 +59,19 @@ export class MapComponent implements OnInit {
   };
 
   /**
-   * Specific center point to store an on-going position (drag).
+   * Specific center to store an on-going position (drag).
    */
-  private onGoingCenterPoint: GeographicCoordinate;
+  private onGoingCenter: LatLngLiteral;
 
-  constructor(private state: Store<AppState>) {
+  constructor(private store: Store<AppState>) {
   }
 
   ngOnInit() {
-    this.centerPoint = this.state.pipe(select(getMapCenterPoint));
-    this.startPoint = this.state.pipe(select(getDataStartPoint));
-    this.endPoint = this.state.pipe(select(getDataEndPoint));
-    this.date = this.state.pipe(select(getDataDate));
-    this.zoomLevel = this.state.pipe(select(getMapZoomLevel));
+    this.center = this.store.pipe(select(getMapCenter));
+    this.startPoint = this.store.pipe(select(getDataStartPoint));
+    this.endPoint = this.store.pipe(select(getDataEndPoint));
+    this.date = this.store.pipe(select(getDataDate));
+    this.zoom = this.store.pipe(select(getMapZoom));
   }
 
   /**
@@ -80,30 +80,30 @@ export class MapComponent implements OnInit {
    * @param zoomLevel the new zoom level
    */
   onZoomChange(zoomLevel: number) {
-    this.zoomLevel.pipe(
+    this.zoom.pipe(
       first(),
       filter(latestZoomLevel => latestZoomLevel !== zoomLevel)
-    ).subscribe(() => this.state.dispatch(new PickZoomLevel(zoomLevel)));
+    ).subscribe(() => this.store.dispatch(new UpdateZoom(zoomLevel)));
   }
 
   /**
-   * Stores the on-going center point to dispatch a change on it later, when the map is idle.
+   * Stores the on-going center to dispatch a change on it later, when the map is idle.
    *
-   * @param centerPoint the new center point
+   * @param center the new center point
    */
-  onCenterChange(centerPoint: LatLngLiteral) {
-    this.onGoingCenterPoint = {latitude: centerPoint.lat, longitude: centerPoint.lng};
+  onCenterChange(center: LatLngLiteral) {
+    this.onGoingCenter = center;
   }
 
   /**
-   * Dispatches a change on the center point, if different.
+   * Dispatches a change on the center, if different.
    */
   onIdle() {
-    if (this.onGoingCenterPoint) {
-      this.centerPoint.pipe(
+    if (this.onGoingCenter) {
+      this.center.pipe(
         first(),
-        filter(latestCenterPoint => JSON.stringify(latestCenterPoint) !== JSON.stringify(this.onGoingCenterPoint))
-      ).subscribe(() => this.state.dispatch(new PickCenterPoint(this.onGoingCenterPoint)));
+        filter(latestCenter => JSON.stringify(latestCenter) !== JSON.stringify(this.onGoingCenter))
+      ).subscribe(() => this.store.dispatch(new UpdateCenter(this.onGoingCenter)));
     }
   }
 

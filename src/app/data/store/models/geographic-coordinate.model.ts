@@ -3,11 +3,6 @@ export interface GeographicCoordinate {
   longitude: number;
 }
 
-export const manhattanCenterPoint: GeographicCoordinate = {
-  latitude: 40.756107,
-  longitude: -73.992067
-};
-
 export const oneWorldTradeCenter: GeographicCoordinate = {
   latitude: 40.712742,
   longitude: -74.013382

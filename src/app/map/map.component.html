@@ -1,7 +1,7 @@
 <agm-map
-  [latitude]="(centerPoint | async).latitude"
-  [longitude]="(centerPoint | async).longitude"
-  [zoom]="zoomLevel | async"
+  [latitude]="(center | async).lat"
+  [longitude]="(center | async).lng"
+  [zoom]="zoom | async"
   [streetViewControl]="false"
   (centerChange)="onCenterChange($event)"
   (zoomChange)="onZoomChange($event)"

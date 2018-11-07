@@ -9,7 +9,7 @@ import {
   getStartPoint,
   getWeather
 } from './data/store/reducers/data.reducer';
-import { getCenterPoint, getZoomLevel, mapReducer, MapState } from './map/store/reducers/map.reducer';
+import { getCenter, getZoom, mapReducer, MapState } from './map/reducers/map.reducer';
 
 export interface AppState {
   data: DataState;
@@ -29,5 +29,5 @@ export const getDataWeather = createSelector(getDataState, getWeather);
 export const getDataPassengerVolume = createSelector(getDataState, getPassengerVolume);
 
 export const getMapState = createFeatureSelector<AppState, MapState>('map');
-export const getMapCenterPoint = createSelector(getMapState, getCenterPoint);
-export const getMapZoomLevel = createSelector(getMapState, getZoomLevel);
+export const getMapCenter = createSelector(getMapState, getCenter);
+export const getMapZoom = createSelector(getMapState, getZoom);
