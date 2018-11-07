@@ -3,12 +3,12 @@ import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/s
 import {
   dataReducer,
   DataState,
-  getDate,
-  getEndPoint,
+  getDepartureTime,
+  getDestination,
+  getOrigin,
   getPassengerVolume,
-  getStartPoint,
   getWeather
-} from './data/store/reducers/data.reducer';
+} from './data/reducers/data.reducer';
 import { getCenter, getZoom, mapReducer, MapState } from './map/reducers/map.reducer';
 
 export interface AppState {
@@ -22,9 +22,9 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 export const getDataState = createFeatureSelector<AppState, DataState>('data');
-export const getDataStartPoint = createSelector(getDataState, getStartPoint);
-export const getDataEndPoint = createSelector(getDataState, getEndPoint);
-export const getDataDate = createSelector(getDataState, getDate);
+export const getDataOrigin = createSelector(getDataState, getOrigin);
+export const getDataDestination = createSelector(getDataState, getDestination);
+export const getDataDepartureTime = createSelector(getDataState, getDepartureTime);
 export const getDataWeather = createSelector(getDataState, getWeather);
 export const getDataPassengerVolume = createSelector(getDataState, getPassengerVolume);
 

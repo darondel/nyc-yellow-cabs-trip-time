@@ -8,9 +8,9 @@
   (idle)="onIdle()">
 
   <agm-direction
-    [origin]="{lat: (startPoint | async).latitude, lng: (startPoint | async).longitude}"
-    [destination]="{lat: (endPoint | async).latitude, lng: (endPoint | async).longitude}"
-    [drivingOptions]="{departureTime: (date | async)}"
+    [origin]="origin | async"
+    [destination]="destination | async"
+    [drivingOptions]="{departureTime: departureTime | async}"
     [markerOptions]="directionMarkerOptions"
     [renderOptions]="directionRendererOptions">
   </agm-direction>

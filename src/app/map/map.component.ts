@@ -8,8 +8,14 @@ import { Observable } from 'rxjs';
 import { filter, first } from 'rxjs/operators';
 
 import { UpdateCenter, UpdateZoom } from './actions/map.actions';
-import { AppState, getDataDate, getDataEndPoint, getDataStartPoint, getMapCenter, getMapZoom } from '../app.reducer';
-import { GeographicCoordinate } from '../data/store/models/geographic-coordinate.model';
+import {
+  AppState,
+  getDataDepartureTime,
+  getDataDestination,
+  getDataOrigin,
+  getMapCenter,
+  getMapZoom
+} from '../app.reducer';
 
 @Component({
   selector: 'app-map',
@@ -19,9 +25,9 @@ import { GeographicCoordinate } from '../data/store/models/geographic-coordinate
 export class MapComponent implements OnInit {
 
   center: Observable<LatLngLiteral>;
-  startPoint: Observable<GeographicCoordinate>;
-  endPoint: Observable<GeographicCoordinate>;
-  date: Observable<Date>;
+  origin: Observable<LatLngLiteral>;
+  destination: Observable<LatLngLiteral>;
+  departureTime: Observable<Date>;
   zoom: Observable<number>;
 
   /**
@@ -68,9 +74,9 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.center = this.store.pipe(select(getMapCenter));
-    this.startPoint = this.store.pipe(select(getDataStartPoint));
-    this.endPoint = this.store.pipe(select(getDataEndPoint));
-    this.date = this.store.pipe(select(getDataDate));
+    this.origin = this.store.pipe(select(getDataOrigin));
+    this.destination = this.store.pipe(select(getDataDestination));
+    this.departureTime = this.store.pipe(select(getDataDepartureTime));
     this.zoom = this.store.pipe(select(getMapZoom));
   }
 
