@@ -10,9 +10,9 @@ import { filter, first } from 'rxjs/operators';
 import { UpdateCenter, UpdateZoom } from './actions/map.actions';
 import {
   AppState,
-  getDataDepartureTime,
-  getDataDestination,
-  getDataOrigin,
+  getInputDataDepartureTime,
+  getInputDataDestination,
+  getInputDataOrigin,
   getMapCenter,
   getMapZoom
 } from '../app.reducer';
@@ -74,9 +74,9 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.center = this.store.pipe(select(getMapCenter));
-    this.origin = this.store.pipe(select(getDataOrigin));
-    this.destination = this.store.pipe(select(getDataDestination));
-    this.departureTime = this.store.pipe(select(getDataDepartureTime));
+    this.origin = this.store.pipe(select(getInputDataOrigin));
+    this.destination = this.store.pipe(select(getInputDataDestination));
+    this.departureTime = this.store.pipe(select(getInputDataDepartureTime));
     this.zoom = this.store.pipe(select(getMapZoom));
   }
 

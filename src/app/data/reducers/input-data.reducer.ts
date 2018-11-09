@@ -3,7 +3,7 @@ import { LatLngLiteral } from '@agm/core';
 import { DataAction, DataActionType } from '../actions/data.actions';
 import { Weather } from '../models/weather.model';
 
-export interface DataState {
+export interface InputDataState {
   origin: LatLngLiteral;
   destination: LatLngLiteral;
   departureTime: Date;
@@ -11,7 +11,7 @@ export interface DataState {
   passengerVolume: number;
 }
 
-export const initialState: DataState = {
+export const initialState: InputDataState = {
   origin: {lat: 40.748817, lng: -73.985428},
   destination: {lat: 40.712742, lng: -74.013382},
   departureTime: new Date(),
@@ -26,7 +26,7 @@ export const initialState: DataState = {
   passengerVolume: 1
 };
 
-export function dataReducer(state = initialState, action: DataAction): DataState {
+export function inputDataReducer(state = initialState, action: DataAction): InputDataState {
   switch (action.type) {
     case DataActionType.UPDATE_ORIGIN:
       return {...state, origin: action.origin};
@@ -43,8 +43,8 @@ export function dataReducer(state = initialState, action: DataAction): DataState
   }
 }
 
-export const getOrigin = (state: DataState) => state.origin;
-export const getDestination = (state: DataState) => state.destination;
-export const getDepartureTime = (state: DataState) => state.departureTime;
-export const getWeather = (state: DataState) => state.weather;
-export const getPassengerVolume = (state: DataState) => state.passengerVolume;
+export const getOrigin = (state: InputDataState) => state.origin;
+export const getDestination = (state: InputDataState) => state.destination;
+export const getDepartureTime = (state: InputDataState) => state.departureTime;
+export const getWeather = (state: InputDataState) => state.weather;
+export const getPassengerVolume = (state: InputDataState) => state.passengerVolume;
