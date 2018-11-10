@@ -16,6 +16,7 @@ import {
   getMapCenter,
   getMapZoom
 } from '../app.reducer';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -39,10 +40,10 @@ export class MapComponent implements OnInit {
    */
   directionMarkerOptions = {
     origin: {
-      icon: 'assets/images/icons/map-dot-blue.png'
+      icon: environment.icons.origin
     },
     destination: {
-      icon: 'assets/images/icons/map-dot-red.png'
+      icon: environment.icons.destination
     }
   };
 
