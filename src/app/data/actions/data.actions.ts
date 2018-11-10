@@ -1,50 +1,34 @@
-import { LatLngLiteral } from '@agm/core';
-
 import { Action } from '@ngrx/store';
 
+import { Information } from '../models/information.model';
+import { Route } from '../models/route.model';
 import { Weather } from '../models/weather.model';
 
 export enum DataActionType {
-  UPDATE_ORIGIN = '[Data] Update Origin',
-  UPDATE_DESTINATION = '[Data] Update Destination',
-  UPDATE_DEPARTURE_TIME = '[Data] Update Departure Time',
-  UPDATE_WEATHER = '[Data] Update Weather',
-  UPDATE_PASSENGER_VOLUME = '[Data] Update Passenger Volume'
+  UPDATE_INFORMATION = '[Data] Update Information',
+  UPDATE_ROUTE = '[Data] Update Route',
+  UPDATE_WEATHER = '[Data] Update Weather'
 }
 
-export class UpdateOrigin implements Action {
-  readonly type = DataActionType.UPDATE_ORIGIN;
+export class UpdateInformation implements Action {
+  readonly type = DataActionType.UPDATE_INFORMATION;
 
-  constructor(public origin: LatLngLiteral) {
+  constructor(public changes: Partial<Information>) {
   }
 }
 
-export class UpdateDestination implements Action {
-  readonly type = DataActionType.UPDATE_DESTINATION;
+export class UpdateRoute implements Action {
+  readonly type = DataActionType.UPDATE_ROUTE;
 
-  constructor(public destination: LatLngLiteral) {
-  }
-}
-
-export class UpdateDepartureTime implements Action {
-  readonly type = DataActionType.UPDATE_DEPARTURE_TIME;
-
-  constructor(public departureTime: Date) {
+  constructor(public changes: Partial<Route>) {
   }
 }
 
 export class UpdateWeather implements Action {
   readonly type = DataActionType.UPDATE_WEATHER;
 
-  constructor(public weather: Weather) {
+  constructor(public changes: Partial<Weather>) {
   }
 }
 
-export class UpdatePassengerVolume implements Action {
-  readonly type = DataActionType.UPDATE_PASSENGER_VOLUME;
-
-  constructor(public passengerVolume: number) {
-  }
-}
-
-export type DataAction = UpdateOrigin | UpdateDestination | UpdateDepartureTime | UpdateWeather | UpdatePassengerVolume;
+export type DataAction = UpdateInformation | UpdateRoute | UpdateWeather;

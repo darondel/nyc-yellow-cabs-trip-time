@@ -1,10 +1,8 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 
 import {
-  getDepartureTime,
-  getDestination,
-  getOrigin,
-  getPassengerVolume,
+  getInformation,
+  getRoute,
   getWeather,
   inputDataReducer,
   InputDataState
@@ -30,18 +28,31 @@ export const reducers: ActionReducerMap<AppState> = {
   map: mapReducer
 };
 
+// Input Data
 export const getInputDataState = createFeatureSelector<AppState, InputDataState>('inputData');
-export const getInputDataOrigin = createSelector(getInputDataState, getOrigin);
-export const getInputDataDestination = createSelector(getInputDataState, getDestination);
-export const getInputDataDepartureTime = createSelector(getInputDataState, getDepartureTime);
-export const getInputDataWeather = createSelector(getInputDataState, getWeather);
-export const getInputDataPassengerVolume = createSelector(getInputDataState, getPassengerVolume);
 
+export const getInputDataInformation = createSelector(getInputDataState, getInformation);
+export const getInputDataDepartureTime = createSelector(getInputDataInformation, information => information.departureTime);
+export const getInputDataPassengerVolume = createSelector(getInputDataInformation, information => information.passengerVolume);
+
+export const getInputDataRoute = createSelector(getInputDataState, getRoute);
+export const getInputDataOrigin = createSelector(getInputDataRoute, route => route.origin);
+export const getInputDataDestination = createSelector(getInputDataRoute, route => route.destination);
+
+export const getInputDataWeather = createSelector(getInputDataState, getWeather);
+export const getInputDataTemperature = createSelector(getInputDataWeather, weather => weather.temperature);
+export const getInputDataPrecipitation = createSelector(getInputDataWeather, weather => weather.precipitation);
+export const getInputDataVisibility = createSelector(getInputDataWeather, weather => weather.visibility);
+
+// Output Data
 export const getOutputDataState = createFeatureSelector<AppState, OutputDataState>('outputData');
+
 export const isOutputDataPending = createSelector(getOutputDataState, isPending);
 export const getOutputDataError = createSelector(getOutputDataState, getError);
 export const getOutputDataResult = createSelector(getOutputDataState, getResult);
 
+// Map Data
 export const getMapState = createFeatureSelector<AppState, MapState>('map');
+
 export const getMapCenter = createSelector(getMapState, getCenter);
 export const getMapZoom = createSelector(getMapState, getZoom);

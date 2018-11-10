@@ -1,50 +1,58 @@
-import { LatLngLiteral } from '@agm/core';
-
 import { DataAction, DataActionType } from '../actions/data.actions';
+import { Information } from '../models/information.model';
+import { PrecipitationUnit } from '../models/precipitation.model';
+import { Route } from '../models/route.model';
+import { TemperatureUnit } from '../models/temperature.model';
+import { VisibilityUnit } from '../models/visibility.model';
 import { Weather } from '../models/weather.model';
 
 export interface InputDataState {
-  origin: LatLngLiteral;
-  destination: LatLngLiteral;
-  departureTime: Date;
+  information: Information;
+  route: Route;
   weather: Weather;
-  passengerVolume: number;
 }
 
 export const initialState: InputDataState = {
-  origin: {lat: 40.748817, lng: -73.985428},
-  destination: {lat: 40.712742, lng: -74.013382},
-  departureTime: new Date(),
-  weather: {
-    temperature: 14,
-    temperatureUnit: '°C',
-    precipitation: 1.52,
-    precipitationUnit: 'mm',
-    visibility: 11,
-    visibilityUnit: 'km'
+  information: {
+    departureTime: getInitialDepartureTime(),
+    passengerVolume: 1
   },
-  passengerVolume: 1
+  route: {
+    origin: {lat: 40.748817, lng: -73.985428},
+    destination: {lat: 40.712742, lng: -74.013382}
+  },
+  weather: {
+    temperature: {value: 14, unit: TemperatureUnit.CELSIUS},
+    precipitation: {value: 1.52, unit: PrecipitationUnit.MILLIMETERS},
+    visibility: {value: 11, unit: VisibilityUnit.KILOMETERS}
+  }
 };
+
+/**
+ * Gets the current date and time, plus two hours.
+ */
+function getInitialDepartureTime(): Date {
+  let result = new Date();
+  result.setHours(result.getHours() + 2);
+  return result;
+}
 
 export function inputDataReducer(state = initialState, action: DataAction): InputDataState {
   switch (action.type) {
-    case DataActionType.UPDATE_ORIGIN:
-      return {...state, origin: action.origin};
-    case DataActionType.UPDATE_DESTINATION:
-      return {...state, destination: action.destination};
-    case DataActionType.UPDATE_DEPARTURE_TIME:
-      return {...state, departureTime: action.departureTime};
+    case DataActionType.UPDATE_INFORMATION:
+      const information = {...state.information, ...action.changes};
+      return {...state, information};
+    case DataActionType.UPDATE_ROUTE:
+      const route = {...state.route, ...action.changes};
+      return {...state, route};
     case DataActionType.UPDATE_WEATHER:
-      return {...state, weather: action.weather};
-    case DataActionType.UPDATE_PASSENGER_VOLUME:
-      return {...state, passengerVolume: action.passengerVolume};
+      const weather = {...state.weather, ...action.changes};
+      return {...state, weather};
     default:
       return state;
   }
 }
 
-export const getOrigin = (state: InputDataState) => state.origin;
-export const getDestination = (state: InputDataState) => state.destination;
-export const getDepartureTime = (state: InputDataState) => state.departureTime;
+export const getInformation = (state: InputDataState) => state.information;
+export const getRoute = (state: InputDataState) => state.route;
 export const getWeather = (state: InputDataState) => state.weather;
-export const getPassengerVolume = (state: InputDataState) => state.passengerVolume;
