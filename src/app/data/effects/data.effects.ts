@@ -9,7 +9,7 @@ import { DataPageActionType, Submit } from '../actions/data-page.actions';
 import { DataService } from '../services/data.service';
 
 @Injectable()
-export class AuthEffects {
+export class DataEffects {
 
   @Effect()
   submit = this.actions.pipe(
