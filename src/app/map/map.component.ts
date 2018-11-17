@@ -5,7 +5,7 @@ import { LatLngLiteral } from '@agm/core';
 import { select, Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
-import { filter, first } from 'rxjs/operators';
+import { filter, first, map } from 'rxjs/operators';
 
 import { UpdateCenter, UpdateZoom } from './actions/map.actions';
 import {
@@ -77,7 +77,7 @@ export class MapComponent implements OnInit {
     this.center = this.store.pipe(select(getMapCenter));
     this.origin = this.store.pipe(select(getInputDataOrigin));
     this.destination = this.store.pipe(select(getInputDataDestination));
-    this.departureTime = this.store.pipe(select(getInputDataDepartureTime));
+    this.departureTime = this.store.pipe(select(getInputDataDepartureTime), map(departureTime => departureTime.toDate()));
     this.zoom = this.store.pipe(select(getMapZoom));
   }
 

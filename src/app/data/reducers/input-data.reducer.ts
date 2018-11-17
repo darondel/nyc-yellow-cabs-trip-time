@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 import { DataAction, DataActionType } from '../actions/data.actions';
 import { Information } from '../models/information.model';
 import { PrecipitationUnit } from '../models/precipitation.model';
@@ -14,7 +16,7 @@ export interface InputDataState {
 
 export const initialState: InputDataState = {
   information: {
-    departureTime: getInitialDepartureTime(),
+    departureTime: moment().add(2, 'hours'),
     passengerVolume: 1
   },
   route: {
@@ -27,15 +29,6 @@ export const initialState: InputDataState = {
     visibility: {value: 11, unit: VisibilityUnit.KILOMETERS}
   }
 };
-
-/**
- * Gets the current date and time, plus two hours.
- */
-function getInitialDepartureTime(): Date {
-  let result = new Date();
-  result.setHours(result.getHours() + 2);
-  return result;
-}
 
 export function inputDataReducer(state = initialState, action: DataAction): InputDataState {
   switch (action.type) {

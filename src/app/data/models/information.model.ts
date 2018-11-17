@@ -1,4 +1,6 @@
+import { Moment } from 'moment';
+
 export interface Information {
-  departureTime: Date;
+  departureTime: Moment;
   passengerVolume: number;
 }
