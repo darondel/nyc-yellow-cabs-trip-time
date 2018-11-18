@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { DataModule } from './data/data.module';
 import { MapModule } from './map/map.module';
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    DataModule,
     MapModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
