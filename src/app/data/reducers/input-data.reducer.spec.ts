@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 import { getInformation, getRoute, getWeather, inputDataReducer, InputDataState } from './input-data.reducer';
 import { UpdateInformation, UpdateRoute, UpdateWeather } from '../actions/data.actions';
 import { PrecipitationUnit } from '../models/precipitation.model';
@@ -7,7 +9,7 @@ import { VisibilityUnit } from '../models/visibility.model';
 describe('InputDataReducer', () => {
   const initialState: InputDataState = {
     information: {
-      departureTime: new Date(),
+      departureTime: moment(),
       passengerVolume: 1
     },
     route: {

@@ -1,10 +1,12 @@
+import * as moment from 'moment';
+
 import { DataActionType, UpdateInformation, UpdateRoute, UpdateWeather } from './data.actions';
 import { TemperatureUnit } from '../models/temperature.model';
 
 describe('DataActions', () => {
   describe('UpdateInformation', () => {
     it('should create an UPDATE_INFORMATION action with a partial information change', () => {
-      const information = {departureTime: new Date()};
+      const information = {departureTime: moment()};
       const action = new UpdateInformation(information);
 
       expect(action.type).toEqual(DataActionType.UPDATE_INFORMATION);
