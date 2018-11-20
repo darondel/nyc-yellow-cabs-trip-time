@@ -3,11 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-import * as moment from 'moment';
 import { Moment } from 'moment';
 
 import { Information } from '../../models/information.model';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-information-form',
@@ -17,29 +15,18 @@ import { environment } from '../../../../environments/environment';
 export class InformationFormComponent implements OnChanges {
 
   @Input() information: Information;
+  @Input() minDepartureTime: Moment;
+  @Input() minPassengerVolume: number;
+  @Input() maxPassengerVolume: number;
+
   @Output() informationChange = new EventEmitter<Information>();
   @Output() statusChange = new EventEmitter<string>();
 
   form: FormGroup;
-  minDepartureTime: Moment = moment();
 
   constructor(private formBuilder: FormBuilder) {
     this.buildForm();
     this.formChanges();
-  }
-
-  /**
-   * Minimum number of passengers allowed in the taxi.
-   */
-  get minPassengerVolume(): number {
-    return environment.configuration.passengerVolume.min;
-  }
-
-  /**
-   * Maximum number of passengers allowed in the taxi.
-   */
-  get maxPassengerVolume(): number {
-    return environment.configuration.passengerVolume.max;
   }
 
   /**
@@ -53,9 +40,9 @@ export class InformationFormComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const change: SimpleChange = changes.information;
+    const informationChange: SimpleChange = changes.information;
 
-    if (change && change.currentValue) {
+    if (informationChange && informationChange.currentValue) {
       this.form.patchValue(this.information, {emitEvent: false});
     }
   }
@@ -64,7 +51,7 @@ export class InformationFormComponent implements OnChanges {
    * Builds the form with these controls:
    * <ul>
    * <li>Departure time: required.</li>
-   * <li>Passenger volume: required and bounded (see {@link minPassengerVolume} and {@link maxPassengerVolume}).</li>
+   * <li>Passenger volume: required and bounded (see {@link minPassengerVolume} and {@link maxPassengerVolume} inputs).</li>
    * </ul>
    */
   private buildForm() {
