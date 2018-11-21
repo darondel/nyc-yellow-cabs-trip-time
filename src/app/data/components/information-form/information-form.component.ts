@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 import { Moment } from 'moment';
 
@@ -24,13 +24,8 @@ export class InformationFormComponent implements OnChanges {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.buildForm();
-    this.formChanges();
-  }
-
   /**
-   * All possible values enabled for the passenger volume.
+   * Values allowed for the passenger volume, ranged between {@link minPassengerVolume} and {@link maxPassengerVolume} inputs.
    */
   get passengerVolumeValues(): number[] {
     return Array.from({
@@ -39,11 +34,17 @@ export class InformationFormComponent implements OnChanges {
     );
   }
 
+  constructor(private formBuilder: FormBuilder) {
+    this.buildForm();
+    this.formChanges();
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     const informationChange: SimpleChange = changes.information;
 
-    if (informationChange && informationChange.currentValue) {
-      this.form.patchValue(this.information, {emitEvent: false});
+    if (informationChange) {
+      this.form.patchValue(informationChange.currentValue, {emitEvent: false});
+      this.statusChange.emit(this.form.status);
     }
   }
 
@@ -70,8 +71,7 @@ export class InformationFormComponent implements OnChanges {
       .subscribe(information => this.informationChange.emit(information));
 
     this.form.statusChanges
-      .pipe(distinctUntilChanged())
-      .subscribe(status => this.statusChange.emit(status))
+      .subscribe(status => this.statusChange.emit(status));
   }
 
 }
