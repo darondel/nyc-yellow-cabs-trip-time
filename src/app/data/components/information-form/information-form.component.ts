@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs/operators';
 
 import { Moment } from 'moment';
 
@@ -25,7 +25,7 @@ export class InformationFormComponent implements OnChanges {
   form: FormGroup;
 
   /**
-   * Values allowed for the passenger volume, ranged between {@link minPassengerVolume} and {@link maxPassengerVolume} inputs.
+   * Values allowed for the passenger volume, ranged between {@link minPassengerVolume} and {@link maxPassengerVolume}, both included.
    */
   get passengerVolumeValues(): number[] {
     return Array.from({
@@ -43,8 +43,7 @@ export class InformationFormComponent implements OnChanges {
     const informationChange: SimpleChange = changes.information;
 
     if (informationChange) {
-      this.form.patchValue(informationChange.currentValue, {emitEvent: false});
-      this.statusChange.emit(this.form.status);
+      this.form.patchValue(informationChange.currentValue);
     }
   }
 
@@ -63,14 +62,24 @@ export class InformationFormComponent implements OnChanges {
   }
 
   /**
-   * Listens to form changes and emits an event each a value or the status is updated.
+   * Listens to form changes and emits an event:
+   * <ul>
+   * <li>When a value is updated by the user (see {@link FormGroup#dirty}) and is different from the previous one.</li>
+   * <li>When the status is updated and is different from the previous one.</li>
+   * </ul>
    */
   private formChanges() {
     this.form.valueChanges
-      .pipe(debounceTime(500))
+      .pipe(
+        filter(() => this.form.dirty),
+        tap(() => this.form.markAsPristine()),
+        debounceTime(500),
+        distinctUntilChanged((information1, information2) => JSON.stringify(information1) === JSON.stringify(information2))
+      )
       .subscribe(information => this.informationChange.emit(information));
 
     this.form.statusChanges
+      .pipe(distinctUntilChanged())
       .subscribe(status => this.statusChange.emit(status));
   }
 
