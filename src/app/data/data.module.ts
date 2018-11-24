@@ -15,6 +15,7 @@ import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment
 import { Moment } from 'moment';
 
 import { InformationFormComponent } from './components/information-form/information-form.component';
+import { RoutePointFormComponent } from './components/route-point-form/route-point-form.component';
 
 /**
  * Moment.js date formats including time.
@@ -44,7 +45,8 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
 
 @NgModule({
   declarations: [
-    InformationFormComponent
+    InformationFormComponent,
+    RoutePointFormComponent
   ],
   imports: [
     CommonModule,

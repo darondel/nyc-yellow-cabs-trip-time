@@ -1,0 +1,7 @@
+table,mat-form-field {
+  width: 100%;
+}
+
+input.right {
+  text-align: right;
+}
