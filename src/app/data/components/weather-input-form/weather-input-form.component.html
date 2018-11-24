@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+  <table>
+    <tr>
+      <td>
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>{{ title }}</mat-label>
+          <input matInput formControlName="value" type="number" class="right">
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Unit</mat-label>
+          <mat-select formControlName="unit">
+            <mat-option *ngFor="let unit of units | keyvalue" [value]="unit.value">
+              {{ unit.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+</form>
