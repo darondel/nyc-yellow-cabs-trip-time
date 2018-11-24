@@ -1,9 +1,9 @@
 import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import * as moment from 'moment';
 
 import { InformationFormComponent } from './information-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 describe('InformationFormComponent', () => {
   let component: InformationFormComponent;
