@@ -1,0 +1,26 @@
+<app-route-point-form
+  (routePointChange)="onRoutePointChange(routePoint.key, $event)"
+  (statusChange)="onStatusChange(routePoint.key, $event)"
+  *ngFor="let routePoint of route | async | keyvalue"
+  [icon]="environment.icons[routePoint.key]"
+  [routePoint]="routePoint.value"
+  [title]="routePoint.key | titlecase">
+</app-route-point-form>
+
+<app-information-form
+  [information]="information | async"
+  [minDepartureTime]="minDepartureTime"
+  [minPassengerVolume]="environment.configuration.passengerVolume.min"
+  [maxPassengerVolume]="environment.configuration.passengerVolume.max"
+  (informationChange)="onInformationChange($event)"
+  (statusChange)="onStatusChange('information', $event)">
+</app-information-form>
+
+<app-weather-input-form
+  *ngFor="let weatherInput of weather | async | keyvalue"
+  [weatherInput]="weatherInput.value"
+  [title]="weatherInput.key | titlecase"
+  [units]="weatherUnits[weatherInput.key]"
+  (weatherInputChange)="onWeatherInputChange(weatherInput.key, $event)"
+  (statusChange)="onStatusChange(weatherInput.key, $event)">
+</app-weather-input-form>

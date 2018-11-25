@@ -17,6 +17,7 @@ import { Moment } from 'moment';
 import { InformationFormComponent } from './components/information-form/information-form.component';
 import { RoutePointFormComponent } from './components/route-point-form/route-point-form.component';
 import { WeatherInputFormComponent } from './components/weather-input-form/weather-input-form.component';
+import { InputDataComponent } from './containers/input-data/input-data.component';
 
 /**
  * Moment.js date formats including time.
@@ -47,6 +48,7 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
 @NgModule({
   declarations: [
     InformationFormComponent,
+    InputDataComponent,
     RoutePointFormComponent,
     WeatherInputFormComponent
   ],
@@ -62,6 +64,9 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapterWithTime},
     {provide: MAT_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS_WITH_TIME}
+  ],
+  exports: [
+    InputDataComponent
   ]
 })
 export class DataModule {
