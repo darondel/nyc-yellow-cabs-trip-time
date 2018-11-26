@@ -1,10 +1,10 @@
 <app-route-point-form
-  (routePointChange)="onRoutePointChange(routePoint.key, $event)"
-  (statusChange)="onStatusChange(routePoint.key, $event)"
   *ngFor="let routePoint of route | async | keyvalue"
-  [icon]="environment.icons[routePoint.key]"
   [routePoint]="routePoint.value"
-  [title]="routePoint.key | titlecase">
+  [title]="routePoint.key | titlecase"
+  [icon]="environment.icons[routePoint.key]"
+  (routePointChange)="onRoutePointChange(routePoint.key, $event)"
+  (statusChange)="onStatusChange(routePoint.key, $event)">
 </app-route-point-form>
 
 <app-information-form
