@@ -3,17 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs/operators';
 
-import { PrecipitationUnit } from '../../models/precipitation.model';
-import { TemperatureUnit } from '../../models/temperature.model';
-import { VisibilityUnit } from '../../models/visibility.model';
-import { WeatherInput } from '../../models/weather.model';
+import { WeatherInput, WeatherInputUnit } from '../../models/weather.model';
 
 @Component({
   selector: 'app-weather-input-form',
   templateUrl: './weather-input-form.component.html',
   styleUrls: ['./weather-input-form.component.css']
 })
-export class WeatherInputFormComponent<T extends PrecipitationUnit | TemperatureUnit | VisibilityUnit> implements OnChanges {
+export class WeatherInputFormComponent<T extends WeatherInputUnit> implements OnChanges {
 
   @Input() weatherInput: WeatherInput<T>;
   @Input() units: Type<T>;

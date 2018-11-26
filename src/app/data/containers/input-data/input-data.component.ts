@@ -12,10 +12,7 @@ import { Moment } from 'moment';
 import { UpdateInformation, UpdateRoute, UpdateWeather } from '../../actions/data.actions';
 import { Information } from '../../models/information.model';
 import { Route } from '../../models/route.model';
-import { PrecipitationUnit } from '../../models/precipitation.model';
-import { TemperatureUnit } from '../../models/temperature.model';
-import { VisibilityUnit } from '../../models/visibility.model';
-import { Weather, WeatherInput } from '../../models/weather.model';
+import { PrecipitationUnit, TemperatureUnit, VisibilityUnit, Weather, WeatherInput } from '../../models/weather.model';
 import { AppState, getInputDataInformation, getInputDataRoute, getInputDataWeather } from '../../../app.reducer';
 import { environment } from '../../../../environments/environment';
 

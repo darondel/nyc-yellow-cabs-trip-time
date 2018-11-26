@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 
 import { DataActionType, UpdateInformation, UpdateRoute, UpdateWeather } from './data.actions';
-import { TemperatureUnit } from '../models/temperature.model';
+import { TemperatureUnit } from '../models/weather.model';
 
 describe('DataActions', () => {
   describe('UpdateInformation', () => {

@@ -2,11 +2,8 @@ import * as moment from 'moment';
 
 import { DataAction, DataActionType } from '../actions/data.actions';
 import { Information } from '../models/information.model';
-import { PrecipitationUnit } from '../models/precipitation.model';
 import { Route } from '../models/route.model';
-import { TemperatureUnit } from '../models/temperature.model';
-import { VisibilityUnit } from '../models/visibility.model';
-import { Weather } from '../models/weather.model';
+import { PrecipitationUnit, TemperatureUnit, VisibilityUnit, Weather } from '../models/weather.model';
 
 export interface InputDataState {
   information: Information;
