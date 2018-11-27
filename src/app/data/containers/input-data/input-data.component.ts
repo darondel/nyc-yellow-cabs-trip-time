@@ -28,11 +28,9 @@ export class InputDataComponent implements OnInit {
   weather: Observable<Weather>;
 
   environment = environment;
-  weatherUnits = {
-    precipitation: PrecipitationUnit,
-    temperature: TemperatureUnit,
-    visibility: VisibilityUnit
-  };
+  precipitationUnits = PrecipitationUnit;
+  temperatureUnits = TemperatureUnit;
+  visibilityUnits = VisibilityUnit;
 
   private statuses = new Map<string, string>();
 

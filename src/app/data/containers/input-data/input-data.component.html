@@ -1,10 +1,17 @@
 <app-route-point-form
-  *ngFor="let routePoint of route | async | keyvalue"
-  [routePoint]="routePoint.value"
-  [title]="routePoint.key | titlecase"
-  [icon]="environment.icons[routePoint.key]"
-  (routePointChange)="onRoutePointChange(routePoint.key, $event)"
-  (statusChange)="onStatusChange(routePoint.key, $event)">
+  [routePoint]="(route | async).origin"
+  title="Origin"
+  [icon]="environment.icons.origin"
+  (routePointChange)="onRoutePointChange('origin', $event)"
+  (statusChange)="onStatusChange('origin', $event)">
+</app-route-point-form>
+
+<app-route-point-form
+  [routePoint]="(route | async).destination"
+  title="Destination"
+  [icon]="environment.icons.destination"
+  (routePointChange)="onRoutePointChange('destination', $event)"
+  (statusChange)="onStatusChange('destination', $event)">
 </app-route-point-form>
 
 <app-information-form
@@ -17,10 +24,25 @@
 </app-information-form>
 
 <app-weather-input-form
-  *ngFor="let weatherInput of weather | async | keyvalue"
-  [weatherInput]="weatherInput.value"
-  [title]="weatherInput.key | titlecase"
-  [units]="weatherUnits[weatherInput.key]"
-  (weatherInputChange)="onWeatherInputChange(weatherInput.key, $event)"
-  (statusChange)="onStatusChange(weatherInput.key, $event)">
+  [weatherInput]="(weather | async).temperature"
+  title="Temperature"
+  [units]="temperatureUnits"
+  (weatherInputChange)="onWeatherInputChange('temperature', $event)"
+  (statusChange)="onStatusChange('temperature', $event)">
+</app-weather-input-form>
+
+<app-weather-input-form
+  [weatherInput]="(weather | async).precipitation"
+  title="Precipitation"
+  [units]="precipitationUnits"
+  (weatherInputChange)="onWeatherInputChange('precipitation', $event)"
+  (statusChange)="onStatusChange('precipitation', $event)">
+</app-weather-input-form>
+
+<app-weather-input-form
+  [weatherInput]="(weather | async).visibility"
+  title="Visibility"
+  [units]="visibilityUnits"
+  (weatherInputChange)="onWeatherInputChange('visibility', $event)"
+  (statusChange)="onStatusChange('visibility', $event)">
 </app-weather-input-form>
