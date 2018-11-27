@@ -22,11 +22,6 @@ export class RoutePointFormComponent implements OnChanges {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.buildForm();
-    this.formChanges();
-  }
-
   /**
    * Minimum latitude.
    */
@@ -53,6 +48,11 @@ export class RoutePointFormComponent implements OnChanges {
    */
   get maxLongitude(): number {
     return 180;
+  }
+
+  constructor(private formBuilder: FormBuilder) {
+    this.buildForm();
+    this.formChanges();
   }
 
   ngOnChanges(changes: SimpleChanges) {

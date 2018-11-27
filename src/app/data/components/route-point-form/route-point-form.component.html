@@ -1,21 +1,19 @@
 <form [formGroup]="form">
-  <table>
-    <tr>
-      <td>
-        <mat-form-field appearance="outline" floatLabel="always">
-          <mat-label>{{ title }} Latitude</mat-label>
-          <img matPrefix [src]="icon" height="24" width="24">
-          <input matInput formControlName="lat" type="number" class="right" [min]="minLatitude" [max]="maxLatitude">
-        </mat-form-field>
-      </td>
+  <mat-grid-list cols="2" rowHeight="89" gutterSize="8">
+    <mat-grid-tile>
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>{{ title }} Latitude</mat-label>
+        <img matPrefix [src]="icon" height="24" width="24">
+        <input matInput formControlName="lat" type="number" [min]="minLatitude" [max]="maxLatitude">
+      </mat-form-field>
+    </mat-grid-tile>
 
-      <td>
-        <mat-form-field appearance="outline" floatLabel="always">
-          <mat-label>{{ title }} Longitude</mat-label>
-          <img matPrefix [src]="icon" height="24" width="24">
-          <input matInput formControlName="lng" type="number" class="right" [min]="minLongitude" [max]="maxLongitude">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+    <mat-grid-tile>
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>{{ title }} Longitude</mat-label>
+        <img matPrefix [src]="icon" height="24" width="24">
+        <input matInput formControlName="lng" type="number" [min]="minLongitude" [max]="maxLongitude">
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
 </form>

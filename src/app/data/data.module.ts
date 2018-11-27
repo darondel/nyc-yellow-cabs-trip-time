@@ -1,3 +1,4 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,6 +9,7 @@ import {
   MatDateFormats,
   MatDatepickerModule,
   MatFormFieldModule,
+  MatGridListModule,
   MatInputModule,
   MatSelectModule
 } from '@angular/material';
@@ -55,9 +57,11 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
   ],
   imports: [
     CommonModule,
+    LayoutModule,
     MatButtonModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatGridListModule,
     MatInputModule,
     MatMomentDateModule,
     MatSelectModule,
