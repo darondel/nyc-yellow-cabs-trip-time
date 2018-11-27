@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs/operators';
@@ -10,7 +10,8 @@ import { Information } from '../../models/information.model';
 @Component({
   selector: 'app-information-form',
   templateUrl: './information-form.component.html',
-  styleUrls: ['./information-form.component.css']
+  styleUrls: ['./information-form.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InformationFormComponent implements OnChanges {
 

@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChange,
+  SimpleChanges,
+  Type
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs/operators';
@@ -8,7 +18,8 @@ import { WeatherInput, WeatherInputUnit } from '../../models/weather.model';
 @Component({
   selector: 'app-weather-input-form',
   templateUrl: './weather-input-form.component.html',
-  styleUrls: ['./weather-input-form.component.css']
+  styleUrls: ['./weather-input-form.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherInputFormComponent<T extends WeatherInputUnit> implements OnChanges {
 

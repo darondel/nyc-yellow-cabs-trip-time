@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { LatLngLiteral } from '@agm/core';
 @Component({
   selector: 'app-route-point-form',
   templateUrl: './route-point-form.component.html',
-  styleUrls: ['./route-point-form.component.css']
+  styleUrls: ['./route-point-form.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RoutePointFormComponent implements OnChanges {
 
