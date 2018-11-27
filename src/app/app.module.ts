@@ -4,12 +4,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 import { DataModule } from './data/data.module';
 import { MapModule } from './map/map.module';
 
 import { AppComponent } from './app.component';
 import { reducers } from './app.reducer';
+import { DataEffects } from './data/effects/data.effects';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -24,7 +26,8 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production
-    })
+    }),
+    EffectsModule.forRoot([DataEffects])
   ],
   bootstrap: [
     AppComponent

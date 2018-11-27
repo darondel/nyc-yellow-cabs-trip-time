@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   DateAdapter,
   MAT_DATE_FORMATS,
+  MatButtonModule,
   MatDateFormats,
   MatDatepickerModule,
   MatFormFieldModule,
@@ -54,6 +55,7 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
   ],
   imports: [
     CommonModule,
+    MatButtonModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,

@@ -46,3 +46,5 @@
   (weatherInputChange)="onWeatherInputChange('visibility', $event)"
   (statusChange)="onStatusChange('visibility', $event)">
 </app-weather-input-form>
+
+<button mat-fab [disabled]="!valid" (click)="onSubmit()">GO!</button>

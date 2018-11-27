@@ -15,6 +15,7 @@ import { Route } from '../../models/route.model';
 import { PrecipitationUnit, TemperatureUnit, VisibilityUnit, Weather, WeatherInput } from '../../models/weather.model';
 import { AppState, getInputDataInformation, getInputDataRoute, getInputDataWeather } from '../../../app.reducer';
 import { environment } from '../../../../environments/environment';
+import { Submit } from '../../actions/data-page.actions';
 
 @Component({
   selector: 'app-input-data',
@@ -94,6 +95,13 @@ export class InputDataComponent implements OnInit {
    */
   onStatusChange(id: string, status: string) {
     this.statuses.set(id, status);
+  }
+
+  /**
+   * Submit input data.
+   */
+  onSubmit() {
+    this.store.dispatch(new Submit());
   }
 
   /**
