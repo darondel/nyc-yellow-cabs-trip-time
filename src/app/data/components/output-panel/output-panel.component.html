@@ -1,0 +1,14 @@
+<mat-spinner *ngIf="pending; else data"></mat-spinner>
+<ng-template #data>
+  <p *ngIf="error">
+    Huh, sorry! Something went wrong: {{ error }}.
+  </p>
+
+  <p *ngIf="result">
+    It should take you <b>{{ result }}</b> minutes to complete the trip.
+  </p>
+
+  <p *ngIf="!error && !result">
+    No data has been loaded yet.
+  </p>
+</ng-template>

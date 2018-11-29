@@ -11,6 +11,7 @@ import {
   MatFormFieldModule,
   MatGridListModule,
   MatInputModule,
+  MatProgressSpinnerModule,
   MatSelectModule
 } from '@angular/material';
 import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -18,6 +19,7 @@ import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment
 import { Moment } from 'moment';
 
 import { InformationFormComponent } from './components/information-form/information-form.component';
+import { OutputPanelComponent } from './components/output-panel/output-panel.component';
 import { RoutePointFormComponent } from './components/route-point-form/route-point-form.component';
 import { WeatherInputFormComponent } from './components/weather-input-form/weather-input-form.component';
 import { InputDataComponent } from './containers/input-data/input-data.component';
@@ -52,6 +54,7 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
   declarations: [
     InformationFormComponent,
     InputDataComponent,
+    OutputPanelComponent,
     RoutePointFormComponent,
     WeatherInputFormComponent
   ],
@@ -64,6 +67,7 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
     MatGridListModule,
     MatInputModule,
     MatMomentDateModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     ReactiveFormsModule
   ],
