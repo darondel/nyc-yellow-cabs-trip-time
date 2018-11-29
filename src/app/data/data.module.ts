@@ -23,6 +23,7 @@ import { OutputPanelComponent } from './components/output-panel/output-panel.com
 import { RoutePointFormComponent } from './components/route-point-form/route-point-form.component';
 import { WeatherInputFormComponent } from './components/weather-input-form/weather-input-form.component';
 import { InputDataComponent } from './containers/input-data/input-data.component';
+import { OutputDataComponent } from './containers/output-data/output-data.component';
 
 /**
  * Moment.js date formats including time.
@@ -54,6 +55,7 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
   declarations: [
     InformationFormComponent,
     InputDataComponent,
+    OutputDataComponent,
     OutputPanelComponent,
     RoutePointFormComponent,
     WeatherInputFormComponent
@@ -76,7 +78,8 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
     {provide: MAT_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS_WITH_TIME}
   ],
   exports: [
-    InputDataComponent
+    InputDataComponent,
+    OutputDataComponent
   ]
 })
 export class DataModule {
