@@ -1,5 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav
+    #sidenav
     class="mat-elevation-z6"
     mode="side"
     [opened]="asideOpened"
@@ -8,6 +9,7 @@
     <ng-content select="[aside]"></ng-content>
   </mat-sidenav>
   <mat-sidenav-content>
+    <app-sidenav-toggle-button [sidenav]="sidenav"></app-sidenav-toggle-button>
     <ng-content select="[main]"></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -6,3 +6,10 @@ mat-sidenav {
   padding: 0 10px;
   width: 360px;
 }
+
+mat-sidenav-content app-sidenav-toggle-button {
+  left: 25px;
+  position: absolute;
+  top: 25px;
+  z-index: inherit;
+}
