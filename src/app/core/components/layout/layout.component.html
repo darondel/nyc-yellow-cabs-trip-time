@@ -4,12 +4,15 @@
     class="mat-elevation-z6"
     mode="side"
     [opened]="asideOpened"
-    [ngStyle]="{width: asideWidth}"
-    (openedChange)="asideOpenedChange.emit($event)">
+    [ngStyle]="{width: asideWidth}">
     <ng-content select="[aside]"></ng-content>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-sidenav-toggle-button [sidenav]="sidenav" tooltipPosition="right"></app-sidenav-toggle-button>
+    <app-sidenav-toggle-button
+      [sidenav]="sidenav"
+      tooltipPosition="right"
+      (click)="asideOpenedChange.emit(!sidenav.opened)">
+    </app-sidenav-toggle-button>
     <ng-content select="[main]"></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
