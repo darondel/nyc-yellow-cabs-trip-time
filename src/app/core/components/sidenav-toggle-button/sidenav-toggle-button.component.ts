@@ -11,7 +11,7 @@ export class SidenavToggleButtonComponent {
 
   @Input() sidenav: MatSidenav;
   @Input() color: ThemePalette = 'primary';
-  @Input() tooltipPosition: TooltipPosition = 'right';
+  @Input() tooltipPosition: TooltipPosition;
 
   /**
    * Tooltip associated with the button.
@@ -24,7 +24,15 @@ export class SidenavToggleButtonComponent {
    * Icon which is put inside the button.
    */
   get icon(): string {
-    return 'arrow_' + (this.sidenav.opened ? 'left' : 'right');
+    let result = 'arrow_';
+
+    if (this.sidenav.position === 'start') {
+      result += this.sidenav.opened ? 'left' : 'right';
+    } else {
+      result += this.sidenav.opened ? 'right' : 'left';
+    }
+
+    return result;
   }
 
 }
