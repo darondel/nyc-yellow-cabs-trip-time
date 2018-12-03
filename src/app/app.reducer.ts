@@ -1,5 +1,6 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 
+import { isSidenavOpen, layoutReducer, LayoutState } from './core/reducers/layout.reducer';
 import {
   getInformation,
   getRoute,
@@ -17,16 +18,23 @@ import {
 import { getCenter, getZoom, mapReducer, MapState } from './map/reducers/map.reducer';
 
 export interface AppState {
+  layout: LayoutState
   inputData: InputDataState;
   outputData: OutputDataState;
   map: MapState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
+  layout: layoutReducer,
   inputData: inputDataReducer,
   outputData: outputDataReducer,
   map: mapReducer
 };
+
+// Layout
+export const getLayoutState = createFeatureSelector<AppState, LayoutState>('layout');
+
+export const isLayoutSidenavOpen = createSelector(getLayoutState, isSidenavOpen);
 
 // Input Data
 export const getInputDataState = createFeatureSelector<AppState, InputDataState>('inputData');
