@@ -10,12 +10,12 @@ import * as moment from 'moment';
 import { Moment } from 'moment';
 
 import { UpdateInformation, UpdateRoute, UpdateWeather } from '../../actions/data.actions';
+import { Submit } from '../../actions/data-page.actions';
 import { Information } from '../../models/information.model';
 import { Route } from '../../models/route.model';
 import { PrecipitationUnit, TemperatureUnit, VisibilityUnit, Weather, WeatherInput } from '../../models/weather.model';
 import { AppState, getInputDataInformation, getInputDataRoute, getInputDataWeather } from '../../../app.reducer';
 import { environment } from '../../../../environments/environment';
-import { Submit } from '../../actions/data-page.actions';
 
 @Component({
   selector: 'app-input-data',
@@ -42,7 +42,7 @@ export class InputDataComponent implements OnInit {
    * Validity of the form.
    */
   get valid(): boolean {
-    return Object.values(this.statuses).every(status => this.isFormValid(status));
+    return Array.from(this.statuses.values()).every(status => this.isFormValid(status));
   }
 
   /**
