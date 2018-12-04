@@ -8,9 +8,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class LayoutComponent {
 
-  @Input() asideOpened: boolean;
-  @Input() asideWidth: string;
+  @Input() sidenavOpened: boolean;
+  @Input() sidenavWidth: string;
 
-  @Output() asideOpenedChange = new EventEmitter<boolean>();
+  @Output() sidenavOpenedChange = new EventEmitter<boolean>();
 
 }
