@@ -1,6 +1,7 @@
 <app-layout
   [sidenavOpened]="sidenavOpened | async"
   [sidenavWidth]="sidenavWidth | async"
+  [sidenavInnerToggleButton]="isSmallScreen | async"
   (sidenavOpenedChange)="onSidenavOpenedChange($event)">
   <div aside>
     <app-input-data></app-input-data>

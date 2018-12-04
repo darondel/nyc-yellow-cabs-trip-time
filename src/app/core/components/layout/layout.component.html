@@ -5,13 +5,19 @@
     mode="side"
     [opened]="sidenavOpened"
     [ngStyle]="{width: sidenavWidth}">
+    <app-sidenav-toggle-button
+      *ngIf="sidenavInnerToggleButton"
+      [sidenav]="sidenav"
+      tooltipPosition="right"
+      (click)="onToggleSidenav()">
+    </app-sidenav-toggle-button>
     <ng-content select="[aside]"></ng-content>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-sidenav-toggle-button
       [sidenav]="sidenav"
       tooltipPosition="right"
-      (click)="sidenavOpenedChange.emit(!sidenav.opened)">
+      (click)="onToggleSidenav()">
     </app-sidenav-toggle-button>
     <ng-content select="[main]"></ng-content>
   </mat-sidenav-content>

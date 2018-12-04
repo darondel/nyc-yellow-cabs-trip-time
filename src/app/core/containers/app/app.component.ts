@@ -16,6 +16,7 @@ import { AppState, isLayoutSidenavOpen } from '../../../app.reducer';
 })
 export class AppComponent implements OnInit {
 
+  isSmallScreen: Observable<boolean>;
   sidenavOpened: Observable<boolean>;
   sidenavWidth: Observable<string>;
 
@@ -26,10 +27,9 @@ export class AppComponent implements OnInit {
    * @inheritDoc
    */
   ngOnInit() {
+    this.isSmallScreen = this.breakpointObserver.observe('(max-width: 749px)').pipe(map(state => state.matches));
     this.sidenavOpened = this.store.pipe(select(isLayoutSidenavOpen));
-    this.sidenavWidth = this.breakpointObserver.observe('(max-width: 749px').pipe(
-      map(({matches}) => matches ? '100%' : '375px')
-    );
+    this.sidenavWidth = this.isSmallScreen.pipe(map(matches => matches ? '100%' : '375px'));
   }
 
   /**

@@ -6,6 +6,11 @@ mat-sidenav {
   width: 375px;
 }
 
+mat-sidenav app-sidenav-toggle-button {
+  display: table;
+  margin: 10px auto;
+}
+
 mat-sidenav-content app-sidenav-toggle-button {
   left: 25px;
   position: absolute;
