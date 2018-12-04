@@ -1,0 +1,13 @@
+<app-layout
+  [sidenavOpened]="sidenavOpened | async"
+  [sidenavWidth]="sidenavWidth | async"
+  (sidenavOpenedChange)="onSidenavOpenedChange($event)">
+  <div aside>
+    <app-input-data></app-input-data>
+    <mat-divider></mat-divider>
+    <app-output-data></app-output-data>
+  </div>
+  <div main>
+    <app-map></app-map>
+  </div>
+</app-layout>

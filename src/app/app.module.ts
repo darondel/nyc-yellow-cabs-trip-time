@@ -6,23 +6,18 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
-import { DataModule } from './data/data.module';
-import { MapModule } from './map/map.module';
+import { CoreModule } from './core/core.module';
 
-import { AppComponent } from './app.component';
 import { reducers } from './app.reducer';
+import { AppComponent } from './core/containers/app/app.component';
 import { DataEffects } from './data/effects/data.effects';
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    DataModule,
-    MapModule,
+    CoreModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production

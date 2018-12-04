@@ -1,0 +1,11 @@
+div[aside] {
+  padding: 8px;
+}
+
+div[main] {
+  height: 100%;
+}
+
+mat-divider {
+  margin: 25px 0;
+}
