@@ -10,7 +10,7 @@ export enum MapActionType {
 export class UpdateCenter implements Action {
   readonly type = MapActionType.UPDATE_CENTER;
 
-  constructor(public center: LatLngLiteral) {
+  constructor(public changes: Partial<LatLngLiteral>) {
   }
 }
 

@@ -15,7 +15,8 @@ export const initialState: MapState = {
 export function mapReducer(state = initialState, action: MapAction): MapState {
   switch (action.type) {
     case MapActionType.UPDATE_CENTER:
-      return {...state, center: action.center};
+      const center = {...state.center, ...action.changes};
+      return {...state, center};
     case MapActionType.UPDATE_ZOOM:
       return {...state, zoom: action.zoom};
     default:
