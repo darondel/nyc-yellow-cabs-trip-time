@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { CloseSidenav, OpenSidenav } from '../../actions/layout.actions';
-import { AppState, isLayoutSidenavOpen } from '../../../app.reducer';
+import { AppState, isLayoutSidenavOpen } from '../../reducers/app.reducer';
 
 @Component({
   selector: 'app-root',

@@ -8,8 +8,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { CoreModule } from './core/core.module';
 
-import { reducers } from './app.reducer';
 import { AppComponent } from './core/containers/app/app.component';
+import { reducers } from './core/reducers/app.reducer';
 import { DataEffects } from './data/effects/data.effects';
 import { environment } from '../environments/environment';
 

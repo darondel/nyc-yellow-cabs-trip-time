@@ -15,7 +15,7 @@ import {
   getInputDataOrigin,
   getMapCenter,
   getMapZoom
-} from '../app.reducer';
+} from '../core/reducers/app.reducer';
 import { environment } from '../../environments/environment';
 
 @Component({

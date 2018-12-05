@@ -14,7 +14,7 @@ import { Submit } from '../../actions/data-page.actions';
 import { Information } from '../../models/information.model';
 import { Route } from '../../models/route.model';
 import { PrecipitationUnit, TemperatureUnit, VisibilityUnit, Weather, WeatherInput } from '../../models/weather.model';
-import { AppState, getInputDataInformation, getInputDataRoute, getInputDataWeather } from '../../../app.reducer';
+import { AppState, getInputDataInformation, getInputDataRoute, getInputDataWeather } from '../../../core/reducers/app.reducer';
 import { environment } from '../../../../environments/environment';
 
 @Component({

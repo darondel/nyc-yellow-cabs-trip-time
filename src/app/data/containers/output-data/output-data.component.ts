@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-import { AppState, getOutputDataError, getOutputDataResult, isOutputDataPending } from '../../../app.reducer';
+import { AppState, getOutputDataError, getOutputDataResult, isOutputDataPending } from '../../../core/reducers/app.reducer';
 
 @Component({
   selector: 'app-output-data',

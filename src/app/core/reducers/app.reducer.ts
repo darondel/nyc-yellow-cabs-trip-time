@@ -1,21 +1,21 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { isSidenavOpen, layoutReducer, LayoutState } from './core/reducers/layout.reducer';
+import { isSidenavOpen, layoutReducer, LayoutState } from './layout.reducer';
 import {
   getInformation,
   getRoute,
   getWeather,
   inputDataReducer,
   InputDataState
-} from './data/reducers/input-data.reducer';
+} from '../../data/reducers/input-data.reducer';
 import {
   getError,
   getResult,
   isPending,
   outputDataReducer,
   OutputDataState
-} from './data/reducers/output-data.reducer';
-import { getCenter, getZoom, mapReducer, MapState } from './map/reducers/map.reducer';
+} from '../../data/reducers/output-data.reducer';
+import { getCenter, getZoom, mapReducer, MapState } from '../../map/reducers/map.reducer';
 
 export interface AppState {
   layout: LayoutState
