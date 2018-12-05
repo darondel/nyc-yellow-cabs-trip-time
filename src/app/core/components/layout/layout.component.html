@@ -7,7 +7,8 @@
     [ngStyle]="{width: sidenavWidth}">
     <app-sidenav-toggle-button
       *ngIf="sidenavInnerToggleButton"
-      [sidenav]="sidenav"
+      [sidenavOpened]="sidenav.opened"
+      [sidenavPosition]="sidenav.position"
       tooltipPosition="right"
       (click)="onToggleSidenav()">
     </app-sidenav-toggle-button>
@@ -15,7 +16,8 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <app-sidenav-toggle-button
-      [sidenav]="sidenav"
+      [sidenavOpened]="sidenav.opened"
+      [sidenavPosition]="sidenav.position"
       tooltipPosition="right"
       (click)="onToggleSidenav()">
     </app-sidenav-toggle-button>

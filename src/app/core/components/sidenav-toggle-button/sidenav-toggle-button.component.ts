@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MatSidenav, ThemePalette, TooltipPosition } from '@angular/material';
+import { ThemePalette, TooltipPosition } from '@angular/material';
 
 @Component({
   selector: 'app-sidenav-toggle-button',
@@ -9,7 +9,8 @@ import { MatSidenav, ThemePalette, TooltipPosition } from '@angular/material';
 })
 export class SidenavToggleButtonComponent {
 
-  @Input() sidenav: MatSidenav;
+  @Input() sidenavOpened: boolean;
+  @Input() sidenavPosition: 'start' | 'end';
   @Input() color: ThemePalette = 'primary';
   @Input() tooltipPosition: TooltipPosition;
 
@@ -17,7 +18,7 @@ export class SidenavToggleButtonComponent {
    * Tooltip associated with the button.
    */
   get tooltip(): string {
-    return (this.sidenav.opened ? 'Collapse' : 'Expand') + ' the side panel';
+    return (this.sidenavOpened ? 'Collapse' : 'Expand') + ' the side panel';
   }
 
   /**
@@ -26,10 +27,10 @@ export class SidenavToggleButtonComponent {
   get icon(): string {
     let result = 'arrow_';
 
-    if (this.sidenav.position === 'start') {
-      result += this.sidenav.opened ? 'left' : 'right';
+    if (this.sidenavPosition === 'start') {
+      result += this.sidenavOpened ? 'left' : 'right';
     } else {
-      result += this.sidenav.opened ? 'right' : 'left';
+      result += this.sidenavOpened ? 'right' : 'left';
     }
 
     return result;
