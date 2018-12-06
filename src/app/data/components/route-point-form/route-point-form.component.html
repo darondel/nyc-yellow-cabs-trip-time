@@ -4,7 +4,7 @@
       <mat-form-field appearance="outline" floatLabel="always">
         <mat-label>{{ title }} Latitude</mat-label>
         <img matPrefix [src]="icon" height="24" width="24">
-        <input matInput formControlName="lat" type="number" [min]="minLatitude" [max]="maxLatitude">
+        <input matInput formControlName="lat" type="number" step="0.001" [min]="minLatitude" [max]="maxLatitude">
       </mat-form-field>
     </mat-grid-tile>
 
@@ -12,7 +12,7 @@
       <mat-form-field appearance="outline" floatLabel="always">
         <mat-label>{{ title }} Longitude</mat-label>
         <img matPrefix [src]="icon" height="24" width="24">
-        <input matInput formControlName="lng" type="number" [min]="minLongitude" [max]="maxLongitude">
+        <input matInput formControlName="lng" type="number" step="0.001" [min]="minLongitude" [max]="maxLongitude">
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>
