@@ -1,0 +1,12 @@
+<app-map-preview
+  [center]="center | async"
+  [origin]="origin | async"
+  [destination]="destination | async"
+  [originIcon]="environment.icons.origin"
+  [destinationIcon]="environment.icons.destination"
+  [zoom]="zoom | async"
+  (centerChange)="onCenterChange($event)"
+  (originChange)="onMarkerChange('origin', $event)"
+  (destinationChange)="onMarkerChange('destination', $event)"
+  (zoomChange)="onZoomChange($event)">
+</app-map-preview>

@@ -1,0 +1,23 @@
+<agm-map
+  [latitude]="center.lat"
+  [longitude]="center.lng"
+  [zoom]="zoom"
+  [streetViewControl]="false"
+  (centerChange)="onCenterChange($event)"
+  (zoomChange)="onZoomChange($event)"
+  (idle)="onIdle()">
+  <agm-marker
+    [latitude]="origin.lat"
+    [longitude]="origin.lng"
+    [iconUrl]="originIcon"
+    [markerDraggable]="markerDraggable"
+    (dragEnd)="onMarkerDragEnd('origin', $event)">
+  </agm-marker>
+  <agm-marker
+    [latitude]="destination.lat"
+    [longitude]="destination.lng"
+    [iconUrl]="destinationIcon"
+    [markerDraggable]="markerDraggable"
+    (dragEnd)="onMarkerDragEnd('destination', $event)">
+  </agm-marker>
+</agm-map>
