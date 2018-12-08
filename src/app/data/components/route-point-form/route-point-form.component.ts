@@ -16,6 +16,7 @@ export class RoutePointFormComponent implements OnChanges {
   @Input() routePoint: LatLngLiteral;
   @Input() title: string;
   @Input() icon: string;
+  @Input() step: number;
 
   @Output() routePointChange = new EventEmitter<LatLngLiteral>();
   @Output() statusChange = new EventEmitter<string>();

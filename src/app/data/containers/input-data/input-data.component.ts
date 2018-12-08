@@ -35,9 +35,6 @@ export class InputDataComponent implements OnInit {
 
   private statuses = new Map<string, string>();
 
-  constructor(private store: Store<AppState>) {
-  }
-
   /**
    * Validity of the form.
    */
@@ -52,6 +49,12 @@ export class InputDataComponent implements OnInit {
     return moment();
   }
 
+  constructor(private store: Store<AppState>) {
+  }
+
+  /**
+   * @inheritDoc
+   */
   ngOnInit() {
     this.information = this.store.pipe(select(getInputDataInformation));
     this.route = this.store.pipe(select(getInputDataRoute));

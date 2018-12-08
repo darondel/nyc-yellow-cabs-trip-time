@@ -9,6 +9,7 @@
       *ngIf="sidenavInnerToggleButton"
       [sidenavOpened]="sidenav.opened"
       [sidenavPosition]="sidenav.position"
+      [color]="sidenavToggleButtonColor"
       tooltipPosition="right"
       (click)="onToggleSidenav()">
     </app-sidenav-toggle-button>
@@ -18,6 +19,7 @@
     <app-sidenav-toggle-button
       [sidenavOpened]="sidenav.opened"
       [sidenavPosition]="sidenav.position"
+      [color]="sidenavToggleButtonColor"
       tooltipPosition="right"
       (click)="onToggleSidenav()">
     </app-sidenav-toggle-button>

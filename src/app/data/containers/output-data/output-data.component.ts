@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState, getOutputDataError, getOutputDataResult, isOutputDataPending } from '../../../core/reducers/app.reducer';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-output-data',
@@ -17,9 +18,14 @@ export class OutputDataComponent implements OnInit {
   error: Observable<string>;
   result: Observable<number>;
 
+  environment = environment;
+
   constructor(private store: Store<AppState>) {
   }
 
+  /**
+   * @inheritDoc
+   */
   ngOnInit() {
     this.pending = this.store.pipe(select(isOutputDataPending));
     this.error = this.store.pipe(select(getOutputDataError));

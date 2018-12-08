@@ -1,14 +1,14 @@
 <form [formGroup]="form">
-  <mat-grid-list cols="3" rowHeight="89" gutterSize="8">
+  <mat-grid-list appFormGrid cols="3" gutterSize="8">
     <mat-grid-tile colspan="2">
-      <mat-form-field appearance="outline" floatLabel="always">
+      <mat-form-field appFormField>
         <mat-label>{{ title }}</mat-label>
         <input matInput formControlName="value" type="number">
       </mat-form-field>
     </mat-grid-tile>
 
     <mat-grid-tile colspan="1">
-      <mat-form-field appearance="outline" floatLabel="always">
+      <mat-form-field appFormField>
         <mat-label>Unit</mat-label>
         <mat-select formControlName="unit">
           <mat-option *ngFor="let unit of units | keyvalue" [value]="unit.value">

@@ -1,7 +1,7 @@
 <form [formGroup]="form">
-  <mat-grid-list cols="1" rowHeight="89">
+  <mat-grid-list appFormGrid cols="1">
     <mat-grid-tile>
-      <mat-form-field appearance="outline" floatLabel="always">
+      <mat-form-field appFormField>
         <mat-label>Departure Time</mat-label>
         <input matInput formControlName="departureTime" [min]="minDepartureTime" [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -10,7 +10,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-      <mat-form-field appearance="outline" floatLabel="always">
+      <mat-form-field appFormField>
         <mat-label>Passenger Volume</mat-label>
         <mat-select formControlName="passengerVolume">
           <mat-option *ngFor="let passengerVolumeValue of passengerVolumeValues" [value]="passengerVolumeValue">

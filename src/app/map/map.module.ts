@@ -14,7 +14,7 @@ import { environment } from '../../environments/environment';
   ],
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: environment.apiKeys.googleMaps
+      apiKey: environment.map.apiKey
     }),
     CommonModule
   ],

@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 
 import { CloseSidenav, OpenSidenav } from '../../actions/layout.actions';
 import { AppState, isLayoutSidenavOpen } from '../../reducers/app.reducer';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,26 @@ export class AppComponent implements OnInit {
   sidenavOpened: Observable<boolean>;
   sidenavWidth: Observable<string>;
 
+  environment = environment;
+
+  /**
+   * Breakpoint defined to identify a small screen.
+   */
+  private get smallScreenBreakpoint(): string {
+    const smallScreen = environment.layout.smallScreen;
+
+    return '(max-width: ' + smallScreen + (typeof smallScreen === 'number' ? 'px' : '');
+  }
+
+  /**
+   * Default width for the sidenav.
+   */
+  private get defaultSidenavWidth(): string {
+    const width = environment.layout.sidenav.width;
+
+    return width + (typeof width === 'number' ? 'px' : '');
+  }
+
   constructor(private store: Store<AppState>, private breakpointObserver: BreakpointObserver) {
   }
 
@@ -27,9 +48,9 @@ export class AppComponent implements OnInit {
    * @inheritDoc
    */
   ngOnInit() {
-    this.isSmallScreen = this.breakpointObserver.observe('(max-width: 749px)').pipe(map(state => state.matches));
+    this.isSmallScreen = this.breakpointObserver.observe(this.smallScreenBreakpoint).pipe(map(state => state.matches));
     this.sidenavOpened = this.store.pipe(select(isLayoutSidenavOpen));
-    this.sidenavWidth = this.isSmallScreen.pipe(map(matches => matches ? '100%' : '375px'));
+    this.sidenavWidth = this.isSmallScreen.pipe(map(matches => matches ? '100%' : this.defaultSidenavWidth));
   }
 
   /**

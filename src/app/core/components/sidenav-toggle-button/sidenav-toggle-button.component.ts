@@ -11,7 +11,7 @@ export class SidenavToggleButtonComponent {
 
   @Input() sidenavOpened: boolean;
   @Input() sidenavPosition: 'start' | 'end';
-  @Input() color: ThemePalette = 'primary';
+  @Input() color: ThemePalette;
   @Input() tooltipPosition: TooltipPosition;
 
   /**

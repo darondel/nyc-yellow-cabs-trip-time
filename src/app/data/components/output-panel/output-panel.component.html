@@ -1,4 +1,4 @@
-<mat-spinner *ngIf="pending; else data" diameter="75"></mat-spinner>
+<mat-spinner *ngIf="pending; else data" [diameter]="spinnerDiameter"></mat-spinner>
 <ng-template #data>
   <p *ngIf="error">
     Huh, sorry! Something went wrong: {{ error }}.

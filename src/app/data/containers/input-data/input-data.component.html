@@ -1,7 +1,8 @@
 <app-route-point-form
   [routePoint]="(route | async).origin"
   title="Origin"
-  [icon]="environment.icons.origin"
+  [icon]="environment.data.input.route.icon.origin"
+  [step]="environment.data.input.route.step"
   (routePointChange)="onRoutePointChange('origin', $event)"
   (statusChange)="onStatusChange('origin', $event)">
 </app-route-point-form>
@@ -9,7 +10,8 @@
 <app-route-point-form
   [routePoint]="(route | async).destination"
   title="Destination"
-  [icon]="environment.icons.destination"
+  [icon]="environment.data.input.route.icon.destination"
+  [step]="environment.data.input.route.step"
   (routePointChange)="onRoutePointChange('destination', $event)"
   (statusChange)="onStatusChange('destination', $event)">
 </app-route-point-form>
@@ -17,8 +19,8 @@
 <app-information-form
   [information]="information | async"
   [minDepartureTime]="minDepartureTime"
-  [minPassengerVolume]="environment.configuration.passengerVolume.min"
-  [maxPassengerVolume]="environment.configuration.passengerVolume.max"
+  [minPassengerVolume]="environment.data.input.passengerVolume.min"
+  [maxPassengerVolume]="environment.data.input.passengerVolume.max"
   (informationChange)="onInformationChange($event)"
   (statusChange)="onStatusChange('information', $event)">
 </app-information-form>
@@ -47,4 +49,10 @@
   (statusChange)="onStatusChange('visibility', $event)">
 </app-weather-input-form>
 
-<button mat-fab [disabled]="!valid" (click)="onSubmit()">GO!</button>
+<button
+  mat-fab
+  [color]="environment.data.submit.color"
+  [disabled]="!valid"
+  (click)="onSubmit()">
+  GO!
+</button>

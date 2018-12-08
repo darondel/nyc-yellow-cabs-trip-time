@@ -2,6 +2,7 @@
   [sidenavOpened]="sidenavOpened | async"
   [sidenavWidth]="sidenavWidth | async"
   [sidenavInnerToggleButton]="isSmallScreen | async"
+  [sidenavToggleButtonColor]="environment.layout.sidenav.toggle.color"
   (sidenavOpenedChange)="onSidenavOpenedChange($event)">
   <div aside>
     <app-input-data></app-input-data>

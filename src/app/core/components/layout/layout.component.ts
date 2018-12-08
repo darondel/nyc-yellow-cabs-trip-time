@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav, ThemePalette } from '@angular/material';
 
 @Component({
   selector: 'app-layout',
@@ -12,6 +12,7 @@ export class LayoutComponent {
   @Input() sidenavOpened: boolean;
   @Input() sidenavWidth: string;
   @Input() sidenavInnerToggleButton: boolean;
+  @Input() sidenavToggleButtonColor: ThemePalette;
 
   @Output() sidenavOpenedChange = new EventEmitter<boolean>();
 
