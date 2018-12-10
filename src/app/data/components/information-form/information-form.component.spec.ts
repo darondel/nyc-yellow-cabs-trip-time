@@ -42,9 +42,9 @@ describe('InformationFormComponent', () => {
   });
 
   describe('Events', () => {
-    describe('informationChange', () => {
+    describe('valueChange', () => {
       beforeEach(() => {
-        spyOn(component.informationChange, 'emit').and.callThrough();
+        spyOn(component.valueChange, 'emit').and.callThrough();
       });
 
       it('should emit an event if a value of the form is updated programmatically', fakeAsync(() => {
@@ -55,7 +55,7 @@ describe('InformationFormComponent', () => {
         });
 
         tick(500);
-        expect(component.informationChange.emit).not.toHaveBeenCalled();
+        expect(component.valueChange.emit).not.toHaveBeenCalled();
       }));
 
       it('should emit an event if a value of the form is updated by the user', fakeAsync(() => {
@@ -68,7 +68,7 @@ describe('InformationFormComponent', () => {
         component.form.setValue(change);
 
         tick(500);
-        expect(component.informationChange.emit).toHaveBeenCalledWith(change);
+        expect(component.valueChange.emit).toHaveBeenCalledWith(change);
       }));
     });
 

@@ -1,52 +1,58 @@
 <app-route-point-form
-  [routePoint]="(route | async).origin"
-  title="Origin"
-  [icon]="environment.data.input.route.icon.origin"
-  [step]="environment.data.input.route.step"
-  (routePointChange)="onRoutePointChange('origin', $event)"
-  (statusChange)="onStatusChange('origin', $event)">
+  appConfiguredForm
+  [formId]="originFormId"
+  [value]="(route | async)[originFormId]"
+  [title]="originFormId | titlecase"
+  (valueChange)="onRoutePointChange(originFormId, $event)"
+  (statusChange)="onStatusChange(originFormId, $event)">
 </app-route-point-form>
 
 <app-route-point-form
-  [routePoint]="(route | async).destination"
-  title="Destination"
-  [icon]="environment.data.input.route.icon.destination"
-  [step]="environment.data.input.route.step"
-  (routePointChange)="onRoutePointChange('destination', $event)"
-  (statusChange)="onStatusChange('destination', $event)">
+  appConfiguredForm
+  [formId]="destinationFormId"
+  [value]="(route | async)[destinationFormId]"
+  [title]="destinationFormId | titlecase"
+  (valueChange)="onRoutePointChange(destinationFormId, $event)"
+  (statusChange)="onStatusChange(destinationFormId, $event)">
 </app-route-point-form>
 
 <app-information-form
-  [information]="information | async"
+  appConfiguredForm
+  [formId]="informationFormId"
+  [value]="information | async"
   [minDepartureTime]="minDepartureTime"
-  [minPassengerVolume]="environment.data.input.passengerVolume.min"
-  [maxPassengerVolume]="environment.data.input.passengerVolume.max"
-  (informationChange)="onInformationChange($event)"
-  (statusChange)="onStatusChange('information', $event)">
+  (valueChange)="onInformationChange($event)"
+  (statusChange)="onStatusChange(informationFormId, $event)">
 </app-information-form>
 
 <app-weather-input-form
-  [weatherInput]="(weather | async).temperature"
-  title="Temperature"
+  appConfiguredForm
+  [formId]="temperatureFormId"
+  [value]="(weather | async)[temperatureFormId]"
+  [title]="temperatureFormId | titlecase"
   [units]="temperatureUnits"
-  (weatherInputChange)="onWeatherInputChange('temperature', $event)"
-  (statusChange)="onStatusChange('temperature', $event)">
+  (valueChange)="onWeatherInputChange(temperatureFormId, $event)"
+  (statusChange)="onStatusChange(temperatureFormId, $event)">
 </app-weather-input-form>
 
 <app-weather-input-form
-  [weatherInput]="(weather | async).precipitation"
-  title="Precipitation"
+  appConfiguredForm
+  [formId]="precipitationFormId"
+  [value]="(weather | async)[precipitationFormId]"
+  [title]="precipitationFormId | titlecase"
   [units]="precipitationUnits"
-  (weatherInputChange)="onWeatherInputChange('precipitation', $event)"
-  (statusChange)="onStatusChange('precipitation', $event)">
+  (valueChange)="onWeatherInputChange(precipitationFormId, $event)"
+  (statusChange)="onStatusChange(precipitationFormId, $event)">
 </app-weather-input-form>
 
 <app-weather-input-form
-  [weatherInput]="(weather | async).visibility"
-  title="Visibility"
+  appConfiguredForm
+  [formId]="visibilityFormId"
+  [value]="(weather | async)[visibilityFormId]"
+  [title]="visibilityFormId | titlecase"
   [units]="visibilityUnits"
-  (weatherInputChange)="onWeatherInputChange('visibility', $event)"
-  (statusChange)="onStatusChange('visibility', $event)">
+  (valueChange)="onWeatherInputChange(visibilityFormId, $event)"
+  (statusChange)="onStatusChange(visibilityFormId, $event)">
 </app-weather-input-form>
 
 <button

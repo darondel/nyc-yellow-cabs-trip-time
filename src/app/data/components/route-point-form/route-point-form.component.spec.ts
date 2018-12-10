@@ -54,9 +54,9 @@ describe('RoutePointFormComponent', () => {
   });
 
   describe('Events', () => {
-    describe('routePointChange', () => {
+    describe('valueChange', () => {
       beforeEach(() => {
-        spyOn(component.routePointChange, 'emit').and.callThrough();
+        spyOn(component.valueChange, 'emit').and.callThrough();
       });
 
       it('should emit an event if a value of the form is updated programmatically', fakeAsync(() => {
@@ -67,7 +67,7 @@ describe('RoutePointFormComponent', () => {
         });
 
         tick(500);
-        expect(component.routePointChange.emit).not.toHaveBeenCalled();
+        expect(component.valueChange.emit).not.toHaveBeenCalled();
       }));
 
       it('should emit an event if a value of the form is updated by the user', fakeAsync(() => {
@@ -80,7 +80,7 @@ describe('RoutePointFormComponent', () => {
         component.form.setValue(change);
 
         tick(500);
-        expect(component.routePointChange.emit).toHaveBeenCalledWith(change);
+        expect(component.valueChange.emit).toHaveBeenCalledWith(change);
       }));
     });
 

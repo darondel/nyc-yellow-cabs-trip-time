@@ -24,8 +24,7 @@ import { RoutePointFormComponent } from './components/route-point-form/route-poi
 import { WeatherInputFormComponent } from './components/weather-input-form/weather-input-form.component';
 import { InputDataComponent } from './containers/input-data/input-data.component';
 import { OutputDataComponent } from './containers/output-data/output-data.component';
-import { FormFieldDirective } from './directives/form-field.directive';
-import { FormGridDirective } from './directives/form-grid.directive';
+import { ConfiguredFormDirective } from './directives/configured-form.directive';
 
 /**
  * Moment.js date formats including time.
@@ -55,8 +54,7 @@ export class MomentDateAdapterWithTime extends MomentDateAdapter {
 
 @NgModule({
   declarations: [
-    FormFieldDirective,
-    FormGridDirective,
+    ConfiguredFormDirective,
     InformationFormComponent,
     InputDataComponent,
     OutputDataComponent,

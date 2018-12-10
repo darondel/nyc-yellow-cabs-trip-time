@@ -29,9 +29,9 @@ describe('WeatherInputFormComponent', () => {
   });
 
   describe('Events', () => {
-    describe('weatherInputChange', () => {
+    describe('valueChange', () => {
       beforeEach(() => {
-        spyOn(component.weatherInputChange, 'emit').and.callThrough();
+        spyOn(component.valueChange, 'emit').and.callThrough();
       });
 
       it('should emit an event if a value of the form is updated programmatically', fakeAsync(() => {
@@ -42,7 +42,7 @@ describe('WeatherInputFormComponent', () => {
         });
 
         tick(500);
-        expect(component.weatherInputChange.emit).not.toHaveBeenCalled();
+        expect(component.valueChange.emit).not.toHaveBeenCalled();
       }));
 
       it('should emit an event if a value of the form is updated by the user', fakeAsync(() => {
@@ -55,7 +55,7 @@ describe('WeatherInputFormComponent', () => {
         component.form.setValue(change);
 
         tick(500);
-        expect(component.weatherInputChange.emit).toHaveBeenCalledWith(change);
+        expect(component.valueChange.emit).toHaveBeenCalledWith(change);
       }));
     });
 

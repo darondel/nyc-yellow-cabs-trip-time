@@ -49,6 +49,48 @@ export class InputDataComponent implements OnInit {
     return moment();
   }
 
+  /**
+   * Form id for the origin point.
+   */
+  get originFormId(): string {
+    return 'origin';
+  }
+
+  /**
+   * Form id for the destination point.
+   */
+  get destinationFormId(): string {
+    return 'destination';
+  }
+
+  /**
+   * Form id for the information.
+   */
+  get informationFormId(): string {
+    return 'information';
+  }
+
+  /**
+   * Form id for the temperature.
+   */
+  get temperatureFormId(): string {
+    return 'temperature';
+  }
+
+  /**
+   * Form id for the precipitation.
+   */
+  get precipitationFormId(): string {
+    return 'precipitation';
+  }
+
+  /**
+   * Form id for the visilibity.
+   */
+  get visibilityFormId(): string {
+    return 'visibility';
+  }
+
   constructor(private store: Store<AppState>) {
   }
 
