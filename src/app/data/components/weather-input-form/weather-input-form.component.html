@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form *ngIf="form" [formGroup]="form">
   <mat-grid-list cols="3" gutterSize="8" [rowHeight]="gridRowHeight">
     <mat-grid-tile colspan="2">
       <mat-form-field [appearance]="fieldAppearance" [color]="fieldColor" [floatLabel]="fieldFloatLabel">
